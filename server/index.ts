@@ -17,9 +17,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  const rows = db.prepare("SELECT * FROM organizations").all();
-  res.json({ message: "Welcome to the server! 🎉", rows });
+app.get("/organizations", (req, res) => {
+  const rows = db.prepare("SELECT * FROM organization").all();
+  res.json({ rows });
 });
 
 app.listen(port, () => {
