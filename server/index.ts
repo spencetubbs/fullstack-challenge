@@ -45,7 +45,7 @@ app.get("/deals/:organizationId", (req, res) => {
       d.start_date,
       d.end_date
     FROM deal d
-    JOIN organizations o
+    JOIN organization o
       ON o.id = d.organization_id
     JOIN account a
       ON a.id = d.account_id
