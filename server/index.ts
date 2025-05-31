@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import initializeDatabase from "./db";
+import { groupDealsByStatus, OrganizationDeal } from "./src/data/deal.types";
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -51,9 +53,13 @@ app.get("/deals/:organizationId", (req, res) => {
       ON ds.id = d.status_id
     WHERE organization_id = @orgId
   `
-  ).all({ orgId: organizationId });
+  ).all({ orgId: organizationId }) as OrganizationDeal[];
 
-  res.json({ rows });
+  // Group each deal by status.
+  // This could potentially be done with a more complex sql query instead.
+  const groupedDeals = groupDealsByStatus(rows);
+
+  res.json({ data: groupedDeals });
 });
 
 app.listen(port, () => {

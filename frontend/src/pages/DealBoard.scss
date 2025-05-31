@@ -1,0 +1,33 @@
+#deal-board {
+  .header {
+    display: flex;
+    align-items: center;
+  }
+
+  .title {
+    margin-right: 20px;
+  }
+
+  .net-value {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    width: fit-content;
+    height: 20px;
+    background-color: lightgrey;
+  }
+
+  .divider {
+    margin: 20px 0;
+  }
+
+  .column {
+    padding: 15px;
+    width: 180px;
+    background-color: lightgrey;
+  }
+
+  .deal-info {
+    margin-top: 8px;
+  }
+}
